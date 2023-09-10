@@ -27,6 +27,8 @@ BLUE2 = (50, 255, 50)
 BLACK = (0, 0, 0)
 
 BLOCK_SIZE = 20
+
+#change value to speed up training (default:20)
 SPEED = 20
 
 
