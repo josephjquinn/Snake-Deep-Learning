@@ -17,9 +17,6 @@ The area of machine learning involved with how software agents choose to take ac
 ### Deep Q Learning: 
 Extension of RL in utilizing a deep neural network to predict the actions
 
-<img alt="wordle" src="model.pdf">
-
-
 ## Reward System:
 
 This system relies on a reward system in order to train the model, every action the snake takes has the potential for a change in the reward score, 
@@ -31,7 +28,7 @@ the snake wants to increase its reward at all times and the model trains itself 
 ## Model: 
 ### Q Learning -> Q value = Quality of action
 
-<img width="598" alt="wordle" src="mode2.png">
+<img width="598" alt="wordle" src="model2.png">
 <img width="598" alt="wordle" src="model3.png">
 
 
