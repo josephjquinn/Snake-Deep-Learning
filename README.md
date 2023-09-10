@@ -1,6 +1,13 @@
 # Snake-Deep-Learning
 
-THis program creates a learning model AI that controls a basic snake game in order to get the best score possible.
+This repository contains a Python implementation of a Deep Q-Learning (DQL) AI that plays a basic Snake arcade game. Deep Q-Learning is a popular reinforcement learning algorithm that allows an agent to learn optimal strategies to maximize its cumulative reward in a given environment.
+
+In this project, we have trained a DQL agent to control the movements of a Snake in a simple arcade game. The goal of the Snake AI is to collect as many food items as possible while avoiding collisions with the walls and itself.
+
+This repository contains a Python implementation of a Deep Q-Learning (DQL) AI that plays a basic Snake arcade game. Deep Q-Learning is a popular reinforcement learning algorithm that allows an agent to learn optimal strategies to maximize its cumulative reward in a given environment.
+
+In this project, we have trained a DQL agent to control the movements of a Snake in a simple arcade game. The goal of the Snake AI is to collect as many food items as possible while avoiding collisions with the walls and itself.
+
 <img width="598" alt="wordle" src="gamess.png">
 <img width="598" alt="wordle" src="gamess2.png">
 
@@ -9,6 +16,8 @@ THis program creates a learning model AI that controls a basic snake game in ord
 The area of machine learning involved with how software agents choose to take actions in an environment in order to maximize their reward.
 ### Deep Q Learning: 
 Extension of RL in utilizing a deep neural network to predict the actions
+
+<img alt="wordle" src="model.pdf">
 
 
 ## Reward System:
@@ -21,6 +30,10 @@ the snake wants to increase its reward at all times and the model trains itself 
 
 ## Model: 
 ### Q Learning -> Q value = Quality of action
+
+<img width="598" alt="wordle" src="mode2.png">
+<img width="598" alt="wordle" src="model3.png">
+
 
 ### (1-4) LOOP
 0. Init Q value (= init model)
