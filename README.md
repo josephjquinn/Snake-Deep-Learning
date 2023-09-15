@@ -4,6 +4,10 @@ This repository contains a Python implementation of a Deep Q-Learning (DQL) AI t
 
 In this project, we have trained a DQL agent to control the movements of a Snake in a simple arcade game. The goal of the Snake AI is to collect as many food items as possible while avoiding collisions with the walls and itself.
 
+
+## Demo after ~100 games of training
+https://github.com/josephjquinn/Snake-Deep-Learning/assets/81782398/1f9af081-f606-4914-ae06-d85a6be0a890
+
 This repository contains a Python implementation of a Deep Q-Learning (DQL) AI that plays a basic Snake arcade game. Deep Q-Learning is a popular reinforcement learning algorithm that allows an agent to learn optimal strategies to maximize its cumulative reward in a given environment.
 
 In this project, we have trained a DQL agent to control the movements of a Snake in a simple arcade game. The goal of the Snake AI is to collect as many food items as possible while avoiding collisions with the walls and itself.
