@@ -12,8 +12,9 @@ This repository contains a Python implementation of a Deep Q-Learning (DQL) AI t
 
 In this project, we have trained a DQL agent to control the movements of a Snake in a simple arcade game. The goal of the Snake AI is to collect as many food items as possible while avoiding collisions with the walls and itself.
 
-<img width="598" alt="wordle" src="gamess.png">
-<img width="598" alt="wordle" src="gamess2.png">
+<img width="598" alt="wordle" src="assets/graphss.png">
+<img width="598" alt="wordle" src="assets/gamess.png">
+<img width="598" alt="wordle" src="assets/gamess2.png">
 
 
 ### Reinforcement Learning: 
@@ -32,8 +33,8 @@ the snake wants to increase its reward at all times and the model trains itself 
 ## Model: 
 ### Q Learning -> Q value = Quality of action
 
-<img width="598" alt="wordle" src="model2.png">
-<img width="598" alt="wordle" src="model3.png">
+<img width="598" alt="wordle" src="assets/model2.png">
+<img width="598" alt="wordle" src="assets/model3.png">
 
 
 ### (1-4) LOOP
@@ -85,6 +86,5 @@ Model.predict(state)
  
 ## `helper.py`
 Contains helper functions to plot our data for the user to read.
-<img width="598" alt="wordle" src="graphss.png">
-<img width="598" alt="wordle" src="graphss2.png">
+<img width="598" alt="wordle" src="assets/graphss2.png">
 
