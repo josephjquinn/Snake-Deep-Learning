@@ -25,7 +25,7 @@ class Agent:
 
         #Loads 100 game presaved model (src/model/l00gmodel)
         #COMMENT OUT THIS CODE CHUNK TO LOAD FRESH MODEL,
-        # self.model.load_state_dict(torch.load('model/100gmodel'))
+        # self.model.load_state_dict(torch.load('../model/100gmodel'))
         # self.model.eval()
         # self.n_games = 300
         # self.epsilon = 0
