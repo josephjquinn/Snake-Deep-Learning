@@ -88,6 +88,11 @@ Model.predict(state)
 Contains helper functions to plot our data for the user to read.
 <img width="598" alt="wordle" src="assets/graphss2.png">
 
+<img width="598" alt="notes" src="assets/Snake DQL-1.png">
+
+
+
+
 
 ### Setup
 #### 1. Download Repository
