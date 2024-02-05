@@ -88,3 +88,16 @@ Model.predict(state)
 Contains helper functions to plot our data for the user to read.
 <img width="598" alt="wordle" src="assets/graphss2.png">
 
+
+### Setup
+#### 1. Download Repository
+      git clone https://github.com/josephjquinn/Snake-Deep-Learning.git
+      
+#### 2. Navigate to main directory
+      cd main
+      
+#### 3. Run User Mode
+      python gameUI.py
+
+#### 4. Train Agent -- saved to../model/model.pth
+      python agent.py
