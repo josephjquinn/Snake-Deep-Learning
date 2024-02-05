@@ -5,7 +5,7 @@ from collections import deque
 from game import gameAI, Direction, Point
 from model import Linear_QNet, QTrainer
 from helper import plot
-import os
+import csv
 
 MAX_MEMORY = 100_000
 BATCH_SIZE = 1000
@@ -114,10 +114,11 @@ class Agent:
 def train():
     plot_scores = []
     plot_mean_scores = []
+    training_data = []
     total_score = 0
     record = 0
     agent = Agent()
-    game = gameAI()
+    game = gameAI() 
     while True:
         # get old state
         state_old = agent.get_state(game)
@@ -152,6 +153,17 @@ def train():
             mean_score = total_score / agent.n_games
             plot_mean_scores.append(mean_score)
             plot(plot_scores, plot_mean_scores)
+
+            training_data.append((score, mean_score))
+            save_data_to_csv('training_data.csv', training_data)
+
+
+def save_data_to_csv(filename, data):
+    with open(filename, mode='w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(["Episode", "Score", "Mean Score"])  # Write header row
+        for episode, (score, mean_score) in enumerate(data, start=1):
+            writer.writerow([episode, score, mean_score])
 
 
 if __name__ == '__main__':
