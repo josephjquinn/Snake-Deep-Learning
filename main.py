@@ -64,36 +64,37 @@ def train(model_path):
 
             print("Game", agent.n_games, "Score", score, "Record:", record)
 
-            plot_scores.append(score)
-            total_score += score
-            mean_score = total_score / agent.n_games
-            plot_mean_scores.append(mean_score)
-            epsilon = agent.epsilon
-            epsilon_vals.append(epsilon)
-            episode_losses.append(episode_loss)
-            action_distributions.append(agent.action_counts.copy())
-            agent.action_counts = [0, 0, 0]
-            plot(
-                plot_scores,
-                plot_mean_scores,
-                episode_losses,
-                step_losses,
-                epsilon_vals,
-                action_distributions,
-                agent.n_games,
-            )
-
-            training_data.append(
-                (
-                    score,
-                    mean_score,
-                    episode_loss,
+            if not model_path:
+                plot_scores.append(score)
+                total_score += score
+                mean_score = total_score / agent.n_games
+                plot_mean_scores.append(mean_score)
+                epsilon = agent.epsilon
+                epsilon_vals.append(epsilon)
+                episode_losses.append(episode_loss)
+                action_distributions.append(agent.action_counts.copy())
+                agent.action_counts = [0, 0, 0]
+                plot(
+                    plot_scores,
+                    plot_mean_scores,
+                    episode_losses,
                     step_losses,
-                    epsilon,
-                    action_counts.copy(),
+                    epsilon_vals,
+                    action_distributions,
+                    agent.n_games,
                 )
-            )
-            save_data_to_csv("./output/training_data.csv", training_data)
+
+                training_data.append(
+                    (
+                        score,
+                        mean_score,
+                        episode_loss,
+                        step_losses,
+                        epsilon,
+                        action_counts.copy(),
+                    )
+                )
+                save_data_to_csv("./output/training_data.csv", training_data)
 
 
 def save_data_to_csv(filename, data):
