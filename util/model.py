@@ -4,7 +4,8 @@ import torch.optim as optim
 import torch.nn.functional as F
 import os
 
-#Setting up Qnet leraning
+
+# Setting up Qnet leraning
 class Linear_QNet(nn.Module):
     def __init__(self, input_size, hidden_size, output_size):
         super().__init__()
@@ -16,9 +17,9 @@ class Linear_QNet(nn.Module):
         x = self.linear2(x)
         return x
 
-#Saving model to model directory
-    def save(self, file_name='model.pth'):
-        model_folder_path = './output'
+    # Saving model to model directory
+    def save(self, file_name="model.pth"):
+        model_folder_path = "./output"
         if not os.path.exists(model_folder_path):
             os.makedirs(model_folder_path)
 
@@ -56,7 +57,9 @@ class QTrainer:
         for idx in range(len(done)):
             Q_new = reward[idx]
             if not done[idx]:
-                Q_new = reward[idx] + self.gamma * torch.max(self.model(next_state[idx]))
+                Q_new = reward[idx] + self.gamma * torch.max(
+                    self.model(next_state[idx])
+                )
 
             target[idx][torch.argmax(action[idx]).item()] = Q_new
 
@@ -68,3 +71,4 @@ class QTrainer:
         loss.backward()
 
         self.optimizer.step()
+        return loss.item()

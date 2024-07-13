@@ -18,6 +18,7 @@ class Agent:
         self.memory = deque(maxlen=MAX_MEMORY)  # popleft()
         self.model = Linear_QNet(11, 256, 3)
         self.trainer = QTrainer(self.model, lr=LR, gamma=self.gamma)
+        self.action_counts = [0, 0, 0]  # [straight, right, left]
 
         if model_path:
             # Loads 100 game presaved model (src/model/l00gmodel)
@@ -87,7 +88,8 @@ class Agent:
         #    self.trainer.train_step(state, action, reward, next_state, done)
 
     def train_short_memory(self, state, action, reward, next_state, done):
-        self.trainer.train_step(state, action, reward, next_state, done)
+        loss = self.trainer.train_step(state, action, reward, next_state, done)
+        return loss
 
     def get_action(self, state):
         # random moves: tradeoff exploration / exploitation
@@ -101,5 +103,6 @@ class Agent:
             prediction = self.model(state0)
             move = torch.argmax(prediction).item()
             final_move[move] = 1
+        self.action_counts[move] += 1
 
         return final_move

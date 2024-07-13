@@ -1,18 +1,59 @@
 import matplotlib.pyplot as plt
-from IPython import display
+import numpy as np
 
-plt.ion()
 
-#Plots score over games played to graph, includes mean score.
-def plot(scores, mean_scores):
+def plot(
+    plot_scores,
+    plot_mean_scores,
+    episode_losses,
+    step_losses,
+    epsilon,
+    action_counts,
+    action_distributions,
+    n_games,
+):
     plt.clf()
-    plt.title('Training...')
-    plt.xlabel('Number of Games')
+  # Subplot 1: Scores over episodes
+    plt.subplot(2, 2, 1)
+    plt.plot(plot_scores, label='Scores')
+    plt.plot(plot_mean_scores, label='Mean Scores')
+    plt.title('Scores over Episodes')
+    plt.xlabel('Episode')
     plt.ylabel('Score')
-    plt.plot(scores)
-    plt.plot(mean_scores)
-    plt.ylim(ymin=0)
-    plt.text(len(scores)-1, scores[-1], str(scores[-1]))
-    plt.text(len(mean_scores)-1, mean_scores[-1], str(mean_scores[-1]))
-    plt.show(block=False)
-    plt.pause(.1)
+    plt.legend()
+
+    # Subplot 2: Episode losses
+    plt.subplot(2, 2, 2)
+    plt.plot(episode_losses)
+    plt.title('Episode Losses')
+    plt.xlabel('Episode')
+    plt.ylabel('Loss')
+
+    # Subplot 3: Step losses
+    plt.subplot(2, 2, 3)
+    plt.plot(step_losses)
+    plt.title('Step Losses')
+    plt.xlabel('Step')
+    plt.ylabel('Loss')
+
+    # Subplot 4: Action distributions
+    plt.subplot(2, 2, 4)
+    action_episodes = list(range(1, len(action_distributions) + 1))
+    action_distributions = np.array(action_distributions)
+    total_actions = action_distributions.sum(axis=1)
+    action_percentages = (action_distributions.T / total_actions).T * 100
+
+    plt.stackplot(
+        action_episodes,
+        action_percentages.T,
+        labels=["Straight", "Right", "Left"],
+        colors=["blue", "green", "red"],
+    )
+    plt.title('Action Distributions')
+    plt.xlabel('Episode')
+    plt.ylabel('Percentage')
+    plt.legend(loc="upper left")
+
+    plt.tight_layout()
+    plt.show()
+    plt.pause(0.1)
