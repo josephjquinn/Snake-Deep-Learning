@@ -1,6 +1,6 @@
 import csv
 import argparse
-from util.helper import plot
+from util.helper import plot, plot_view
 
 
 def load_data_from_csv(filename):
@@ -79,6 +79,15 @@ def main():
     n_games = len(data)
 
     plot(
+        list(plot_scores),
+        list(plot_mean_scores),
+        list(episode_losses),
+        list(step_losses),
+        list(epsilon_vals),
+        list(action_distributions),
+        n_games,
+    )
+    plot_view(
         list(plot_scores),
         list(plot_mean_scores),
         list(episode_losses),
