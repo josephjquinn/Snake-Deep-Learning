@@ -5,13 +5,13 @@ import csv
 from util.agent import Agent
 
 
-def train(fresh):
+def train(model_path):
     plot_scores = []
     plot_mean_scores = []
     training_data = []
     total_score = 0
     record = 0
-    agent = Agent(fresh)
+    agent = Agent(model_path)
     game = gameAI()
     while True:
         # get old state
@@ -62,6 +62,12 @@ def save_data_to_csv(filename, data):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--fresh", action="store_true", help="Load fresh model")
+    parser.add_argument(
+        "--model_path",
+        type=str,
+        default=None,
+        help="Path to the pre-trained model file",
+    )
     args = parser.parse_args()
-    train(args.fresh)
+
+    train(model_path=args.model_path)

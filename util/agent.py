@@ -11,7 +11,7 @@ LR = 0.001
 
 
 class Agent:
-    def __init__(self, mpath):
+    def __init__(self, model_path):
         self.n_games = 0
         self.epsilon = 0  # randomness
         self.gamma = 0.9  # discount rate
@@ -19,10 +19,10 @@ class Agent:
         self.model = Linear_QNet(11, 256, 3)
         self.trainer = QTrainer(self.model, lr=LR, gamma=self.gamma)
 
-        if mpath:
+        if model_path:
             # Loads 100 game presaved model (src/model/l00gmodel)
             # COMMENT OUT THIS CODE CHUNK TO LOAD FRESH MODEL,
-            self.model.load_state_dict(torch.load(mpath))
+            self.model.load_state_dict(torch.load(model_path))
             self.model.eval()
             self.n_games = 300
             self.epsilon = 0
