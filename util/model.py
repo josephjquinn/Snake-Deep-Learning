@@ -3,6 +3,7 @@ import torch.nn as nn
 import torch.optim as optim
 import torch.nn.functional as F
 import os
+import numpy as np
 
 
 # Setting up Qnet leraning
@@ -36,21 +37,22 @@ class QTrainer:
         self.criterion = nn.MSELoss()
 
     def train_step(self, state, action, reward, next_state, done):
-        state = torch.tensor(state, dtype=torch.float)
-        next_state = torch.tensor(next_state, dtype=torch.float)
-        action = torch.tensor(action, dtype=torch.long)
-        reward = torch.tensor(reward, dtype=torch.float)
-        # (n, x)
+        state = np.array(state, dtype=np.float32)
+        next_state = np.array(next_state, dtype=np.float32)
+        action = np.array(action, dtype=np.int64)
+        reward = np.array(reward, dtype=np.float32)
 
         if len(state.shape) == 1:
-            # (1, x)
-            state = torch.unsqueeze(state, 0)
-            next_state = torch.unsqueeze(next_state, 0)
-            action = torch.unsqueeze(action, 0)
-            reward = torch.unsqueeze(reward, 0)
+            state = np.expand_dims(state, axis=0)
+            next_state = np.expand_dims(next_state, axis=0)
+            action = np.expand_dims(action, axis=0)
+            reward = np.expand_dims(reward, axis=0)
             done = (done,)
 
-        # 1: predicted Q values with current state
+        state = torch.tensor(state)
+        next_state = torch.tensor(next_state)
+        action = torch.tensor(action)
+        reward = torch.tensor(reward, dtype=torch.float32)
         pred = self.model(state)
 
         target = pred.clone()
