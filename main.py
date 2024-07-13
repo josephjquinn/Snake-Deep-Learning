@@ -79,21 +79,56 @@ def train(model_path):
                 episode_losses,
                 step_losses,
                 epsilon_vals,
-                action_counts,
                 action_distributions,
                 agent.n_games,
             )
 
-            training_data.append((score, mean_score))
+            training_data.append(
+                (
+                    score,
+                    mean_score,
+                    episode_loss,
+                    step_losses,
+                    epsilon,
+                    action_counts.copy(),
+                )
+            )
             save_data_to_csv("./output/training_data.csv", training_data)
 
 
 def save_data_to_csv(filename, data):
     with open(filename, mode="w", newline="") as file:
         writer = csv.writer(file)
-        writer.writerow(["Episode", "Score", "Mean Score"])
-        for episode, (score, mean_score) in enumerate(data, start=1):
-            writer.writerow([episode, score, mean_score])
+        writer.writerow(
+            [
+                "Episode",
+                "Score",
+                "Mean Score",
+                "Episode Loss",
+                "Step Loss",
+                "Epsilon",
+                "Action Counts",
+            ]
+        )
+        for episode, (
+            score,
+            mean_score,
+            episode_loss,
+            step_losses,
+            epsilon,
+            action_counts,
+        ) in enumerate(data, start=1):
+            writer.writerow(
+                [
+                    episode,
+                    score,
+                    mean_score,
+                    episode_loss,
+                    step_losses[-1],
+                    epsilon,
+                    action_counts,
+                ]
+            )
 
 
 if __name__ == "__main__":
