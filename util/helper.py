@@ -17,7 +17,6 @@ def plot(
     plt.subplot(3, 2, 1)
     plt.plot(plot_scores, label="Scores")
     plt.plot(plot_mean_scores, label="Mean Scores")
-    plt.title("Scores over Episodes")
     plt.xlabel("Episode")
     plt.ylabel("Score")
     plt.legend()
@@ -25,14 +24,12 @@ def plot(
     # Subplot 2: Episode losses
     plt.subplot(3, 2, 2)
     plt.plot(episode_losses)
-    plt.title("Episode Losses")
     plt.xlabel("Episode")
     plt.ylabel("Loss")
 
     # Subplot 3: Step losses
     plt.subplot(3, 2, 3)
     plt.plot(step_losses)
-    plt.title("Step Losses")
     plt.xlabel("Step")
     plt.ylabel("Loss")
 
@@ -49,7 +46,6 @@ def plot(
         labels=["Straight", "Right", "Left"],
         colors=["blue", "green", "red"],
     )
-    plt.title("Action Distributions")
     plt.xlabel("Episode")
     plt.ylabel("Percentage")
     plt.legend(loc="upper left")
@@ -57,17 +53,14 @@ def plot(
     # Subplot 5: Epsilon over episodes
     plt.subplot(3, 2, 5)
     plt.plot(range(1, n_games + 1), epsilon)
-    plt.title("Epsilon over Episodes")
     plt.xlabel("Episode")
     plt.ylabel("Epsilon")
-
 
     # Subplot 6: Total ations
     plt.subplot(3, 2, 6)
     action_episodes = list(range(1, len(action_distributions) + 1))
     total_actions = np.sum(action_distributions, axis=1)  # Total actions per episode
     plt.plot(action_episodes, total_actions, label="Total Actions", color="purple")
-    plt.title("Total Actions per Episode")
     plt.xlabel("Episode")
     plt.ylabel("Total Actions")
     plt.legend()
@@ -115,7 +108,16 @@ def plot_view(
     plt.legend(loc="upper left")
     plt.show()
 
-    plt.figure(figsize=(6,4))
+    plt.figure(figsize=(6, 4))
+    action_episodes = list(range(1, len(action_distributions) + 1))
+    total_actions = np.sum(action_distributions, axis=1)
+    plt.plot(action_episodes, total_actions, label="Total Actions", color="purple")
+    plt.xlabel("Episode")
+    plt.ylabel("Total Actions")
+    plt.legend()
+    plt.show()
+
+    plt.figure(figsize=(6, 4))
     plt.plot(range(1, n_games + 1), epsilon)
     plt.xlabel("Episode")
     plt.ylabel("Epsilon")
