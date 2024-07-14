@@ -10,7 +10,8 @@ OUTPUT_DIR = "./output"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 
-def train(model_path, speed):
+def train(model_path, speed, num_episodes):
+    episode = 0
     plot_scores = []
     plot_mean_scores = []
     training_data = []
@@ -27,6 +28,8 @@ def train(model_path, speed):
     plt.ion()
 
     while True:
+        if episode >= num_episodes:
+            break
         episode_loss = 0
         # get old state
         state_old = agent.get_state(game)
@@ -53,6 +56,8 @@ def train(model_path, speed):
         if done:
             # train long memory
             game.reset()
+            episode += 1
+
             agent.n_games += 1
             agent.train_long_memory()
 
@@ -92,6 +97,35 @@ def train(model_path, speed):
                     )
                 )
                 save_data_to_csv("./output/training_data.csv", training_data)
+
+
+def evaluate(model_path, speed):
+    agent = Agent(model_path)
+    game = gameAI(speed)
+    total_score = 0
+    num_games = 0
+    plot_scores = []
+    plt.figure(figsize=(7, 5))
+    plt.ion()
+
+    while True:
+        state_old = agent.get_state(game)
+        final_move = agent.get_action(state_old)
+        _, done, score = game.play_step(final_move)
+
+        if done:
+            game.reset()
+            num_games += 1
+            total_score += score
+            mean_score = total_score / num_games
+            plot_scores.append(score)
+            print("Game", num_games, "Score", score, "Mean Score:", mean_score)
+
+            if not model_path:
+                plot(plot_scores, mean_scores=[mean_score], game_num=num_games)
+
+        if num_games >= 10:  # evaluate 10 games
+            break
 
 
 def save_data_to_csv(filename, data):
@@ -140,6 +174,19 @@ if __name__ == "__main__":
         default=20,
         help="Game Speed Default: 20",
     )
+    parser.add_argument(
+        "--num_episodes",
+        type=int,
+        default=1000,
+        help="Number of episodes to train for",
+    )
     args = parser.parse_args()
 
-    train(model_path=args.model_path, speed=args.speed)
+    if args.model_path:
+        print("EVAL MODEL")
+        evaluate(model_path=args.model_path, speed=args.speed)
+    else:
+        print("TRAINING MODEL")
+        train(
+            model_path=args.model_path, speed=args.speed, num_episodes=args.num_episodes
+        )
