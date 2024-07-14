@@ -100,8 +100,12 @@ Contains helper functions to plot metrics.
 #### 4. Train Agent -- saved to./output/model.pth
 
       python main.py
-flags
+Args
+
+- --model_path: Path to a pre-trained model file. If provided, the script runs in evaluation mode. If not provided, the script runs in training mode.
+- --speed: Speed of the game (default: 20).
+- --num_episodes: Number of episodes to train for (default: 1000).
       
 #### 4. View Metrics
 
-      python view.py ./output/training_data.csv
+      python view.py ./output/training.csv

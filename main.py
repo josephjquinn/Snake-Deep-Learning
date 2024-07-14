@@ -96,7 +96,7 @@ def train(model_path, speed, num_episodes):
                         action_counts.copy(),
                     )
                 )
-                save_data_to_csv("./output/training_data.csv", training_data)
+                save_data_to_csv("./output/training.csv", training_data)
 
 
 def evaluate(model_path, speed):
