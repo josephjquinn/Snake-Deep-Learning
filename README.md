@@ -35,11 +35,13 @@ I currently only have a linear epsilon decay function implemented, I wish to con
 
 ### Results after 100 episodes
 
-<img width="350" src="./imgs/loss.png">
-<img width="350" src="./imgs/action.png">
-<img width="350" src="./imgs/action_dist.png">
-<img width="350" src="./imgs/reward.png">
-<img width="350" src="./imgs/epsilon.png">
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+      <img width="300" src="./imgs/loss.png">
+      <img width="300" src="./imgs/action.png">
+      <img width="300" src="./imgs/action_dist.png">
+      <img width="300" src="./imgs/reward.png">
+      <img width="300" src="./imgs/epsilon.png">
+</div>
 
 https://github.com/user-attachments/assets/71ed1b75-293e-4067-8b6c-88b903e0595a
 
