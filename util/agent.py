@@ -21,8 +21,6 @@ class Agent:
         self.action_counts = [0, 0, 0]  # [straight, right, left]
 
         if model_path:
-            # Loads 100 game presaved model (src/model/l00gmodel)
-            # COMMENT OUT THIS CODE CHUNK TO LOAD FRESH MODEL,
             self.model.load_state_dict(torch.load(model_path))
             self.model.eval()
             self.n_games = 300
@@ -78,7 +76,7 @@ class Agent:
 
     def train_long_memory(self):
         if len(self.memory) > BATCH_SIZE:
-            mini_sample = random.sample(self.memory, BATCH_SIZE)  # list of tuples
+            mini_sample = random.sample(self.memory, BATCH_SIZE)
         else:
             mini_sample = self.memory
 

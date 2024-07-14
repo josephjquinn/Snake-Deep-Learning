@@ -6,7 +6,6 @@ import os
 import numpy as np
 
 
-# Setting up Qnet leraning
 class Linear_QNet(nn.Module):
     def __init__(self, input_size, hidden_size, output_size):
         super().__init__()
@@ -18,7 +17,6 @@ class Linear_QNet(nn.Module):
         x = self.linear2(x)
         return x
 
-    # Saving model to model directory
     def save(self, file_name="model.pth"):
         model_folder_path = "./output"
         if not os.path.exists(model_folder_path):

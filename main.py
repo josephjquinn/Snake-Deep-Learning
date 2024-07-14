@@ -6,9 +6,7 @@ import csv
 from util.agent import Agent
 from matplotlib import pyplot as plt
 
-OUTPUT_DIR = "./output"  # Define your output directory here
-
-# Ensure output directory exists or create it
+OUTPUT_DIR = "./output"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 
@@ -53,7 +51,7 @@ def train(model_path, speed):
         agent.remember(state_old, final_move, reward, state_new, done)
 
         if done:
-            # train long memory, plot result
+            # train long memory
             game.reset()
             agent.n_games += 1
             agent.train_long_memory()

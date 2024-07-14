@@ -56,10 +56,10 @@ def plot(
     plt.xlabel("Episode")
     plt.ylabel("Epsilon")
 
-    # Subplot 6: Total ations
+    # Subplot 6: Total actions
     plt.subplot(3, 2, 6)
     action_episodes = list(range(1, len(action_distributions) + 1))
-    total_actions = np.sum(action_distributions, axis=1)  # Total actions per episode
+    total_actions = np.sum(action_distributions, axis=1)
     plt.plot(action_episodes, total_actions, label="Total Actions", color="purple")
     plt.xlabel("Episode")
     plt.ylabel("Total Actions")
