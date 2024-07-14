@@ -1,4 +1,4 @@
-# Snake-Deep-Learning
+# snake-dql
 
 This repository contains a Python implementation of a Deep Q-Learning (DQL) model that plays a basic Snake arcade game. This algorithm that allows an agent to learn optimal strategies to maximize its cumulative reward in a given environment.
 
@@ -87,16 +87,21 @@ Contains helper functions to plot metrics.
 
 #### 1. Download Repository
 
-      git clone https://github.com/josephjquinn/Snake-Deep-Learning.git
+      git clone https://github.com/josephjquinn/snake-dql.git
 
-#### 2. Navigate to main directory
+#### 2. Install Dependencies
 
-      cd main
+      pip install -r requirements.txt
 
 #### 3. Run User Mode
 
-      python gameUI.py
+      python util/gameUI.py
 
-#### 4. Train Agent -- saved to../model/model.pth
+#### 4. Train Agent -- saved to./output/model.pth
 
-      python agent.py
+      python main.py
+flags
+      
+#### 4. View Metrics
+
+      python view.py ./output/training_data.csv
