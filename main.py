@@ -89,7 +89,6 @@ def train(model_path):
                         score,
                         mean_score,
                         episode_loss,
-                        step_losses,
                         epsilon,
                         action_counts.copy(),
                     )
@@ -106,7 +105,6 @@ def save_data_to_csv(filename, data):
                 "Score",
                 "Mean Score",
                 "Episode Loss",
-                "Step Loss",
                 "Epsilon",
                 "Action Counts",
             ]
@@ -115,7 +113,6 @@ def save_data_to_csv(filename, data):
             score,
             mean_score,
             episode_loss,
-            step_losses,
             epsilon,
             action_counts,
         ) in enumerate(data, start=1):
@@ -125,7 +122,6 @@ def save_data_to_csv(filename, data):
                     score,
                     mean_score,
                     episode_loss,
-                    step_losses[-1],
                     epsilon,
                     action_counts,
                 ]
