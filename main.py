@@ -12,7 +12,7 @@ OUTPUT_DIR = "./output"  # Define your output directory here
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 
-def train(model_path):
+def train(model_path, speed):
     plot_scores = []
     plot_mean_scores = []
     training_data = []
@@ -24,7 +24,7 @@ def train(model_path):
     total_score = 0
     record = 0
     agent = Agent(model_path)
-    game = gameAI()
+    game = gameAI(speed)
     plt.figure(figsize=(7, 5))
     plt.ion()
 
@@ -136,6 +136,12 @@ if __name__ == "__main__":
         default=None,
         help="Path to the pre-trained model file",
     )
+    parser.add_argument(
+        "--speed",
+        type=int,
+        default=20,
+        help="Game Speed Default: 20",
+    )
     args = parser.parse_args()
 
-    train(model_path=args.model_path)
+    train(model_path=args.model_path, speed=args.speed)
