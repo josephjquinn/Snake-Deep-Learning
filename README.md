@@ -4,16 +4,7 @@ This repository contains a Python implementation of a Deep Q-Learning (DQL) mode
 
 ## Training Demo
 
-<img src='./imgs/100g_demo.mov'>
-
-
-https://github.com/user-attachments/assets/71ed1b75-293e-4067-8b6c-88b903e0595a
-
-
-
 https://github.com/user-attachments/assets/490d675b-5603-4262-9761-1424ef9d1604
-
-
 
 ## dql Architecture:
 
@@ -49,6 +40,8 @@ I currently only have a linear epsilon decay function implemented, I wish to con
 <img width="350" src="./imgs/action_dist.png">
 <img width="350" src="./imgs/reward.png">
 <img width="350" src="./imgs/epsilon.png">
+
+https://github.com/user-attachments/assets/71ed1b75-293e-4067-8b6c-88b903e0595a
 
 ### Class Structure
 
