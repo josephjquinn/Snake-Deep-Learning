@@ -7,6 +7,14 @@ This repository contains a Python implementation of a Deep Q-Learning (DQL) mode
 <img src='./imgs/100g_demo.mov'>
 
 
+https://github.com/user-attachments/assets/71ed1b75-293e-4067-8b6c-88b903e0595a
+
+
+
+https://github.com/user-attachments/assets/490d675b-5603-4262-9761-1424ef9d1604
+
+
+
 ## dql Architecture:
 
 #### Reward System:
