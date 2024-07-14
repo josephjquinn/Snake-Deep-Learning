@@ -8,7 +8,7 @@ https://github.com/user-attachments/assets/490d675b-5603-4262-9761-1424ef9d1604
 
 ## dql Architecture:
 
-#### Reward System:
+### Reward System:
 
 Every action the snake takes has the potential for a change in the reward score,
 the snake wants to increase its reward at all times and the model trains itself to be the most efficient at this task.
@@ -25,7 +25,7 @@ the snake wants to increase its reward at all times and the model trains itself 
 
 <img width="600" src="./imgs/dql_struc.png">
 
-#### Model:
+### Model:
 
 The model I use for learning is a simple 2 layer feed forward network defaulting to 256 hidden layer neurons. I wish to continue this project testing with CNN's and vision transformer models.
 
@@ -100,12 +100,13 @@ Contains helper functions to plot metrics.
 #### 4. Train Agent -- saved to./output/model.pth
 
       python main.py
+
 Args
 
 - --model_path: Path to a pre-trained model file. If provided, the script runs in evaluation mode. If not provided, the script runs in training mode.
 - --speed: Speed of the game (default: 20).
 - --num_episodes: Number of episodes to train for (default: 1000).
-      
+
 #### 4. View Metrics
 
       python view.py ./output/training.csv
